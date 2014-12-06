@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing searches
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+var utility = require('../services/utilities.js')
 var http = require('http');
 var rest = require('restler');
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
      console.log(result);
     });
     imagga_request.on('complete',function(result){
-      return res.json(result["results"][0]["tags"]);
+      return res.json(utility.parseImagga(result) );
     });
   },
 
