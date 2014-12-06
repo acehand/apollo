@@ -31,8 +31,11 @@ module.exports.policies = {
     '*': ['passport']
   },
 
-  'search' : true
+  'search' : true,
 
+  SmsController: {
+    incoming: true
+  }
   // '*': true,
 
   /***************************************************************************
