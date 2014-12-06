@@ -5,7 +5,7 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var twilio = require("/usr/local/lib/node_modules/twilio/lib");
+var twilio = require("twilio");
 var client = new twilio.RestClient(sails.config.twilioConfig.key, sails.config.twilioConfig.key.secret);
 
 
