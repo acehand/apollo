@@ -6,8 +6,8 @@
  */
 
 var twilio = require("twilio");
-var client = new twilio.RestClient(sails.config.twilioConfig.key, sails.config.twilioConfig.key.secret);
-
+var twilio_config = sails.config.twilio
+var client = new twilio.RestClient(twilio_config.TWILIO_SID, twilio_config.TWILIO_TOKEN);
 
 module.exports = {
 	incoming: function(req, res){

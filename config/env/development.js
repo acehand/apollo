@@ -10,7 +10,9 @@
  *
  */
 
-module.exports = {
+module.exports.twilio = {
+	TWILIO_SID:'AC7e83dcc644f2db1aba8831700b2ab78d',
+	TWILIO_TOKEN:'1392668645e3c5ce5895aa67e052032c'
 
   /***************************************************************************
    * Set the default database connection for models in the development       *
