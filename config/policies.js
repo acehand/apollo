@@ -29,7 +29,10 @@ module.exports.policies = {
   '*': ['passport', 'sessionAuth'],
  'auth': {
     '*': ['passport']
-  }
+  },
+
+  'search' : true
+
   // '*': true,
 
   /***************************************************************************
