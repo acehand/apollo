@@ -8,4 +8,4 @@ Pre Requisties
 >>         Mongo Db -> brew install mongo
 
 After cloning
-  Run npm install 
+>> Run npm install 
