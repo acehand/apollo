@@ -7,5 +7,5 @@ Pre Requisties
          sudo npm -g install sails  
          Mongo Db -> brew install mongo
 
-After cloning 
+After cloning
   Run npm install 
