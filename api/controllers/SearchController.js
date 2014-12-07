@@ -34,9 +34,11 @@ module.exports = {
       on('complete',function(results){
          results.response.venues.forEach(function(venue,index,array){
             var name = venue.name;
+            console.log(array);
             utilities.getImagesInVenue(venue.id, function(result){
               if (typeof result !== 'undefined') imagesByVenue.push({name:name, images:result});
               if (index == array.length-1) {
+                  console.log('all done');
                   return res.json(imagesByVenue);
                }
             });

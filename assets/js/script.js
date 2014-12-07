@@ -17,8 +17,8 @@ $(function(){
 
   $('#searchForm').on('submit', function(e) {
     doSearch();
-    e.preventDefault;
-    e.stopPropagation;
+    e.preventDefault();
+    e.stopPropagation();
   });
 
   function doSearch() {
@@ -27,8 +27,12 @@ $(function(){
       url: '/search/getVenuesByLocation?lat_long=' + latitude + "," + longitude + "&venue=" + searchTerm,
       dataType: "JSON",
       success: function(data) {
-        var  images = parseFSQImages(data.images);
-        console.log(images);
+        var  images = parseFSQImages(data);
+        var results = "";
+        images.forEach(function(image){
+          results = results + "<div class='col'><img src='" + image.small_thumb + "'></div>";
+        })
+        $("#searchResults").html(results);
       }
     });
   }
@@ -39,17 +43,15 @@ function parseFSQImages(data){
       large_thumb_size = 'original',
       preview_size = "350x350",
       image_records = [];
-    data.forEach(function(image){
+    data.forEach(function(item){
+      var image = item.images[0];
       record = {
         preview : image.prefix+preview_size+image.suffix,
         large_thumb: image.prefix+large_thumb_size+image.suffix,
         small_thumb: image.prefix+small_thumb_size+image.suffix,
-        title : '',
-        img_source : source, 
+        title : item.name,
         type : 'image',
-        image_id : image.id, 
-        search_term : venue_name,
-        venue_id : venue_id
+        image_id : image.id,
       };
       image_records.push(record);
     });
