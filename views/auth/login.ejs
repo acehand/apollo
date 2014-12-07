@@ -3,13 +3,12 @@
     <%= __(error) %>
   <% }) %>
 <% } %>
-
-<!-- <form role="form" action="/auth/local" method="post">
-  <input type="text" name="identifier" placeholder="Username or Email">
-  <input type="password" name="password" placeholder="Password">
-  <button type="submit">Sign in</button>
-</form>
- -->
-<% Object.keys(providers).forEach(function (key) { %>
-  <a href="/auth/<%= providers[key].slug %>" class="twitter_button" role="button"><img src="/images/sign-in-with-twitter-link.png" alt=""></a>
-<% }) %>
+<div class="login_container">
+  <div class="login_stuff">
+    <div class="bottom">
+      <% Object.keys(providers).forEach(function (key) { %>
+        <a href="/auth/<%= providers[key].slug %>" class="twitter_button" role="button"><img src="/images/sign-in-with-twitter-link.png" alt=""></a>
+      <% }) %>
+    </div>
+  </div>
+</div>

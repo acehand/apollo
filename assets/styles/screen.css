@@ -1,0 +1,29 @@
+.login_container {
+	background:url('/images/main_bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
+}
+
+body.auth-login {
+	height : 100%;
+}
+
+.twitter_button {
+	position: absolute;
+	bottom: 40px;
+	width: 80%;
+	margin: 0 10% 0 10%;
+	text-align: center;
+	height: 50px;
+}
+
+.twitter_button img {
+	background: rgba(255,255,255,0.8);
+	padding: 15px;
+	border-radius: 15px;
+	border: 2px solid black;
+	height: 60px;
+}

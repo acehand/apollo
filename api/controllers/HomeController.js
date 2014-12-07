@@ -7,16 +7,20 @@
 
 var HomeController = {
 	index: function(req, res) {
-		// console.log(req.session.passport.user);
-		User.findOne({
-			id: req.session.passport.user
-		}, function(err, passport){
-			if (passport) {
-				res.view('home/index', {user: passport});
-			} else {
-				res.redirect('/login');
-			}
-		});
+		if (req.session.passport && req.session.passport.user) {
+			User.findOne({
+				id: req.session.passport.user
+			}, function(err, user){
+				if (user) {
+					res.view('home/index', {user: user});
+				} else {
+					console.log('here');
+					res.redirect('/login');
+				}
+			});
+		} else {
+			res.redirect('/login');
+		}
 	}
 };
 
