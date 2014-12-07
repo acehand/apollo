@@ -35,10 +35,6 @@ module.exports = {
     process.stdout.write(message.sid);
     console.log("\nMessage sent")
 });
-// END SMS message test
-
-
-
-	}
+}
 };
 
