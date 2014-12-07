@@ -27,14 +27,15 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': ['passport', 'sessionAuth'],
- 'auth': {
+  'auth': {
     '*': ['passport']
   },
-
   'search' : true,
-
   SmsController: {
     incoming: true
+  },
+  HomeController: {
+    index : true // ['passport','sessionAuth']
   }
   // '*': true,
 

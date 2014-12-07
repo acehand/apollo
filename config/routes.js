@@ -31,9 +31,15 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
+  '*': function(req, res, next) {
+    console.log(req.method, req.url);
+    sails.log.silly();
+    sails.log.verbose(req.method, req.url); next();},
 
   '/': {
-    view: 'homepage'
+    controller: 'home',
+    action: 'index'
+    // view: 'home/index'
   },
   /***************************************************************************
   *                                                                          *
