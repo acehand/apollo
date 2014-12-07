@@ -4,17 +4,23 @@
 </nav>
 <article id='main' class='current'>
   <form>
-    <input id="search_bar" type="search" placeholder="Search">
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-          Category Fields
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <% behance_list.categories.forEach(function(category){ %>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= category  %></a></li>
-          <% }); %>
-        </ul>
+    <div class="input-group">
+      <div class="input-group-btn">
+            <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Category Fields
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <% behance_list.categories.forEach(function(category){ %>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= category  %></a></li>
+            <% }); %>
+          </ul>
+            </div>
+        </div>
+        <input type="text" class="form-control" placeholder="search">
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-info">Go</button>
+        </div>
     </div>
   </form>
   <!-- <div id="results" style="padding-top:10px;">
