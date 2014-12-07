@@ -1,16 +1,37 @@
 <nav class='current'>
   <h1>Apollo</h1>
-  <button><a id='openRequests' class='button'>Requests<span class='counter'>43</span></a></button>
+  <button><a id='openRequests' class='button'>Requests<span class='counter'>43</span><span class='nav'></span></a></button>
 </nav>
 <article id='main' class='current'>
-  <form id="searchForm">
-    <select id="categorySelect">
-      <% behance_list.categories.forEach(function(category){ %>
-        <option value="<%= category %>"><%= category  %></option>
-      <% }); %>
-    </select>
-    <input id="searchInput" type="text" class="form-control" placeholder="search">
-    <input type="submit" value="go">
-  </form>
+  <section>
+    <form id="searchForm">
+      <select id="categorySelect">
+        <option value="">Select Category</option>
+        <% behance_list.categories.forEach(function(category){ %>
+          <option value="<%= category %>"><%= category  %></option>
+        <% }); %>
+      </select>
+      <input id="searchInput" type="text" class="form-control" placeholder="search">
+      <input type="submit" value="go">
+    </form>
+    <div class="grid wrap">
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+    </div>
+  </section>
 </article>
 
