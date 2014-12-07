@@ -1,3 +1,4 @@
+var baseParams = sails.config;
 module.exports  = {
 	parseImagga : function(result){
 		return result["results"][0]["tags"];
@@ -42,7 +43,29 @@ module.exports  = {
 		};
 		return category_record;	
 	},
+	getImages: function (search_term,callBack) {
+    var query_term = search_term;
+    var term = "?per_page=1&query="+query_term;
+    var url = baseParams.shutterStock.base_url + term;
+    var images = rest.get(url, baseParams.shutterStock.headers);
+    var req_image;
+    images.on('success',function(result){
+      if (result.total_count > 0) {
+        req_image = result.data[0].assets.small_thumb;
+      } else {
+      	req_image = "";
+      }
 
+      // Images.addImage(result,term, 'SHUTTERSTOCK');
+    });
+    images.on('fail',function(result){
+     Log.error("No results");
+     console.log(result);
+    });
+    images.on('complete',function(result){
+        callBack(req_image.url);
+    });
+  },
 	getImagesInVenue : function (venue_id, callBack){
     var url = 'https://api.foursquare.com/v2/venues/'+venue_id+'/photos?oauth_token=QRIWYVATNEXM3HVSD2SQA5QVIK3JRZF205K5TBOZSPV02G5Q&v=20141207';
     var photos, images;
