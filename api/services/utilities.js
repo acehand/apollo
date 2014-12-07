@@ -45,7 +45,7 @@ module.exports  = {
 
 	getImagesInVenue : function (venue_id, callBack){
     var url = 'https://api.foursquare.com/v2/venues/'+venue_id+'/photos?oauth_token=QRIWYVATNEXM3HVSD2SQA5QVIK3JRZF205K5TBOZSPV02G5Q&v=20141207';
-    var photos, images=[];
+    var photos, images;
     rest.get(url).
       on('fail',function(response){
         Log.error(response);
@@ -58,9 +58,10 @@ module.exports  = {
             images = photos.items;
           }
         }
-      }).
-      on('complete', function(){
       	callBack(images);
+      }).
+      on('complete', function(result){
+      	  return;
       });
   },
 }

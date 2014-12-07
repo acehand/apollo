@@ -27,8 +27,8 @@ $(function(){
       url: '/search/getVenuesByLocation?lat_long=' + latitude + "," + longitude + "&venue=" + searchTerm,
       dataType: "JSON",
       success: function(data) {
-        var  images = parseFSQImages(data);
-        console.debug(images);
+        var  images = parseFSQImages(data.images);
+        console.log(images);
       }
     });
   }

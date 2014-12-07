@@ -30,15 +30,17 @@ module.exports = {
     Log.info(url);
     rest.get(url).
       on('success', function(results){
-          results.response.venues.forEach(function(venue){
-            name = venue.name;
-            utilities.getImagesInVenue(venue.id, function(result){
-                imagesByVenue.push({name:result})  
-            });
-          });
       }).
       on('complete',function(results){
-          return res.json(venues);
+         results.response.venues.forEach(function(venue,index,array){
+            var name = venue.name;
+            utilities.getImagesInVenue(venue.id, function(result){
+              if (typeof result !== 'undefined') imagesByVenue.push({name:name, images:result});
+              if (index == array.length-1) {
+                  return res.json(imagesByVenue);
+               }
+            });
+          });
       }).
       on('fail', function(result){
         Log.error(result);
