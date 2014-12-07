@@ -1,6 +1,6 @@
 var utility = require('../services/utilities.js')
      rest = require('restler'),
-      baseParams = sails.config;
+    baseParams = sails.config;
 module.exports = {
   
   getTags: function (req, res) {
@@ -69,18 +69,23 @@ module.exports = {
   },
 
   getImages: function (req, res) {
-    var term = "landscape travel";
-    var url = baseParams.shutterStock.base_url + utilities.buildSTQuery(req.term);
+    var query_term = req.query.search_term
+    var term = "?per_page=1&query="+query_term;
+    var url = baseParams.shutterStock.base_url + term;
     var images = rest.get(url, baseParams.shutterStock.headers);
+    var req_image;
     images.on('success',function(result){
-      Images.addImage(result,term, 'SHUTTERSTOCK');
+      if (result.total_count > 0) {
+        req_image = result.data[0].assets.small_thumb
+      }
+      // Images.addImage(result,term, 'SHUTTERSTOCK');
     });
     images.on('fail',function(result){
      Log.error("No results");
      console.log(result);
     });
     images.on('complete',function(result){
-        return res.json(result);
+        return res.json(req_image.url);
     });
   },
 
