@@ -1,66 +1,37 @@
 <nav class='current'>
   <h1>Apollo</h1>
-  <a id='openRequests' class='button'>Requests<span class='counter'>43</span></a>
+  <button><a id='openRequests' class='button'>Requests<span class='counter'>43</span><span class='nav'></span></a></button>
 </nav>
 <article id='main' class='current'>
-  <form>
-    <input id="search_bar" type="search" placeholder="Search">
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-          Category Fields
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <% behance_list.categories.forEach(function(category){ %>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= category  %></a></li>
-          <% }); %>
-        </ul>
-    </div>
-  </form>
-  <!-- <div id="results" style="padding-top:10px;">
-    <article id="fruits" class="current">
-      <section>
-        <ul class="list">
-          <li class='nav' data-goto='apples'>
-            <h3>Apples</h3>
-          </li>
-          <li class='nav' data-goto='oranges'>
-            <h3>Oranges</h3>
-          </li>
-          <li class='nav' data-goto='bananas'>
-            <h3>Bananas</h3>
-          </li>
-          <li class='nav' data-goto='mangos'>
-            <h3>Mangos</h3>
-          </li>
-          <li class='nav' data-goto='avocados'>
-            <h3>Avocados</h3>
-          </li>
-        </ul>
-      </section>
-    </article>
+  <section>
+    <form id="searchForm">
+      <select id="categorySelect">
+        <option value="">Select Category</option>
+        <% behance_list.categories.forEach(function(category){ %>
+          <option value="<%= category %>"><%= category  %></option>
+        <% }); %>
+      </select>
+      <input id="searchInput" type="text" class="form-control" placeholder="search">
+      <input type="submit" value="go">
+    </form>
     <div class="grid wrap">
-      <div class="col">
-        <div>
-          <img style="height:100px;"src="/images/flash.jpg" alt="">
-        </div>
-      </div>
-      <div class="col">
-        <div>
-          <img style="height:100px;"src="/images/flash.jpg" alt="">
-        </div>
-      </div>
-      <div class="col">
-        <div>
-          <img style="height:100px;"src="/images/flash.jpg" alt="">
-        </div>
-      </div>
-      <div class="col">
-        <div>
-          <img style="height:100px;"src="/images/flash.jpg" alt="">
-        </div>
-      </div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
+      <div class="col"><img src="/images/flash.jpg" style="height:100px;"></div>
     </div>
-  </div>
-</article> -->
+  </section>
+</article>
 
