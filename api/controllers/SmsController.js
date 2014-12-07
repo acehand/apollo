@@ -21,8 +21,8 @@ module.exports = {
 			var body_text = "Here is a picture of " + data["Body"];
 			var image_url = "";
 		} else {
-			var body_text = "Can't find a picture of " + data["Body"] + " yet. Check back later"
-			var image_url = sails.config.twilioConfig.default_pic
+			var body_text = "Can't find a picture of " + data["Body"] + " yet. Check back later";
+			var image_url = sails.config.twilioConfig.default_pic;
 		}
 
 		// SMS Message sender from earlier (TEST)

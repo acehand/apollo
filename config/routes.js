@@ -59,5 +59,7 @@ module.exports.routes = {
 
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
-  'post /sms/incoming': 'SmsController.incoming'
+  'post /sms/incoming': 'SmsController.incoming',
+  'get /upload/list_buckets': 'UploadController.list_buckets',
+  'get /upload/list_bucket_names': 'UploadController.list_bucket_names'
 };

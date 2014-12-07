@@ -37,6 +37,10 @@ module.exports.policies = {
   },
   HomeController: {
     index : true // ['passport','sessionAuth']
+  },
+  UploadController: {
+    list_buckets : true,
+    list_bucket_names : true
   }
   // '*': true,
 
