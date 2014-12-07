@@ -77,6 +77,8 @@ $(function(){
     function showPosition(position) {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
+      console.log(latitude);
+      console.log(longitude);
       initialize();
     }
 

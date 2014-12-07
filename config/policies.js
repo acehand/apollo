@@ -43,7 +43,10 @@ module.exports.policies = {
     list_bucket_names : true
   },
   AskController: {
-    index: true
+    index: true,
+    getRequests: true,
+    createRequest: true,
+    show: true
   }
   // '*': true,
 
