@@ -56,7 +56,6 @@ module.exports  = {
           if (photos.count > 0) {
             Log.info('Fetching Images');
             images = photos.items;
-            Log(images);
           }
         }
       }).

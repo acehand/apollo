@@ -27,11 +27,31 @@ $(function(){
       url: '/search/getVenuesByLocation?lat_long=' + latitude + "," + longitude + "&venue=" + searchTerm,
       dataType: "JSON",
       success: function(data) {
-        console.log(data);
+        var  images = parseFSQImages(data);
+        console.debug(images);
       }
     });
   }
 });
 
-
-
+function parseFSQImages(data){
+  var small_thumb_size = "100x100",
+      large_thumb_size = 'original',
+      preview_size = "350x350",
+      image_records = [];
+    data.forEach(function(image){
+      record = {
+        preview : image.prefix+preview_size+image.suffix,
+        large_thumb: image.prefix+large_thumb_size+image.suffix,
+        small_thumb: image.prefix+small_thumb_size+image.suffix,
+        title : '',
+        img_source : source, 
+        type : 'image',
+        image_id : image.id, 
+        search_term : venue_name,
+        venue_id : venue_id
+      };
+      image_records.push(record);
+    });
+    return image_records;
+}
