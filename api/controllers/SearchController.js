@@ -22,11 +22,12 @@ module.exports = {
 
 //Needs Location lat lon or Place  and String for location
   getVenuesByLocation : function(req, res) {
-     req.Lat_Long = "40.7,-74";
-     // req.location="new york";
-     req.venue="cake";
+    var params = {};
+    // params.Lat_Long = req.query.lat_long;
+    params.Lat_Long = "48.858093,2.294694";
+    params.venue = req.query.venue;
     var venues;
-    var url = 'https://api.foursquare.com/v2/venues/search' + (utilities.buildFSQuery(req));
+    var url = 'https://api.foursquare.com/v2/venues/search' + (utilities.buildFSQuery(params));
     Log.info(url);
     rest.get(url).
       on('success', function(results){
