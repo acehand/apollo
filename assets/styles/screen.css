@@ -35,3 +35,13 @@ body.auth-login {
 	margin: 0px;
 	padding: 0px;
 }
+
+#askHolder {
+	text-align: center;
+}
+
+#askHolder a{
+	text-decoration: none;
+	color: black;
+	font-size: 22px;
+}

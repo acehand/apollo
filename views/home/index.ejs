@@ -1,6 +1,6 @@
 <nav class='current'>
   <h1>Apollo</h1>
-  <button><a id='openRequests' class='button'>Requests<span class='counter'>43</span><span class='nav'></span></a></button>
+  <button><a id='openRequests' class='button'>Requests(<span class='total_requests counter'>0</span>)<span class='nav'></span></a></button>
 </nav>
 <article id='main' class='current'>
   <section>
@@ -14,6 +14,9 @@
       <input id="searchInput" type="text" class="form-control" placeholder="search">
       <input type="submit" value="go">
     </form>
+    <ul class="list">
+      <li id="askHolder" style="display:none;"><a id="askForImage" href="/ask">Create Request</a></li>
+    </ul>
     <div class="grid wrap" id="searchResults">
     </div>
   </section>

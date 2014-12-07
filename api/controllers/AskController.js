@@ -36,13 +36,14 @@ module.exports = {
 					'<=' : box.x2,
 					'>=' : box.x1
 				}
-			}, limit: 10
+			}
 		}, function(err, results){
-			console.log(err);
 			res.json(results);
 		});
 	},
 	createRequest: function(req, res) {
+		var socket = req.socket;
+		var io = sails.io;
 		var lat = req.query.lat;
 		var lon = req.query.lon;
 		var search = req.query.search;
@@ -53,6 +54,7 @@ module.exports = {
 			search: search,
 			user_id: user_id
 		}, function(err, result){
+			io.sockets.emit('createRequest', 'new');
 			res.json(result);
 		});
 	},
