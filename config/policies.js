@@ -41,6 +41,9 @@ module.exports.policies = {
   UploadController: {
     list_buckets : true,
     list_bucket_names : true
+  },
+  AskController: {
+    index: true
   }
   // '*': true,
 
