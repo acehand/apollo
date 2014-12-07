@@ -33,6 +33,7 @@
     "sails-generate-auth": "^0.2.0",
     "sails-mongo": "^0.10.4",
     "twilio": "^1.10.0",
+    "unirest": "^0.3.0",
     "validator": "^3.22.2"
   },
   "scripts": {
