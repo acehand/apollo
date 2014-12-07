@@ -31,6 +31,7 @@ module.exports.policies = {
     '*': ['passport']
   },
   'search' : true,
+  'categories' : true,
   SmsController: {
     incoming: true
   },

@@ -13,8 +13,7 @@ module.exports = {
 				img_source : source
 			}
 			Images.create(record);
-		});
-		
+		});		
 	}
 };
 

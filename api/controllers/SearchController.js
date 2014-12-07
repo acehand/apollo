@@ -1,11 +1,5 @@
-/**
- * SearchController
- *
- * @description :: Server-side logic for managing searches
- * @help        :: See http://links.sailsjs.org/docs/controllers
- */
 var utility = require('../services/utilities.js')
-var http = require('http');
+
 var rest = require('restler');
 var baseParams = sails.config;
 module.exports = {
@@ -25,7 +19,6 @@ module.exports = {
     });
   },
 
-
   getImages: function (req, res) {
     //Add page numbers to DB later
     var search_term = '?query="landscape travel"';
@@ -36,25 +29,18 @@ module.exports = {
       Images.addImage(result,term, 'SHUTTERSTOCK');
     });
     images.on('fail',function(result){
-      // console.log(result);
-      console.log('No results');
+     console.log('No results');
     });
     images.on('complete',function(result){
         return res.json({
            todo: 'getImages() is not implemented yet!'
         });  
     });
-    
   },
 
-
-  /**
-   * `SearchController.getSearchAttributes()`
-   */
   getSearchAttributes: function (req, res) {
     return res.json({
       todo: 'getSearchAttributes() is not implemented yet!'
     });
   }
 };
-
