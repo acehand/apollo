@@ -5,8 +5,19 @@
 <article id='main' class='current'>
   <form>
     <input id="search_bar" type="search" placeholder="Search">
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          Category Fields
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <% behance_list.categories.forEach(function(category){ %>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= category  %></a></li>
+          <% }); %>
+        </ul>
+    </div>
   </form>
-  <div id="results" style="padding-top:10px;">
+  <!-- <div id="results" style="padding-top:10px;">
     <article id="fruits" class="current">
       <section>
         <ul class="list">
@@ -51,5 +62,5 @@
       </div>
     </div>
   </div>
-</article>
+</article> -->
 

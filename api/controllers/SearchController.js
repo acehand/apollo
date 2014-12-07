@@ -1,6 +1,6 @@
 var utility = require('../services/utilities.js')
-    rest = require('restler'),
-    baseParams = sails.config;
+     rest = require('restler'),
+      baseParams = sails.config;
 module.exports = {
   
   getTags: function (req, res) {

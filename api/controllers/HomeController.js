@@ -12,7 +12,9 @@ var HomeController = {
 				id: req.session.passport.user
 			}, function(err, user){
 				if (user) {
-					res.view('home/index', {user: user});
+					Categories.cacheCategoriesFromBehance(function(result){
+           				res.view('home/index', {user: user, behance_list : result});
+        			});
 				} else {
 					console.log('here');
 					res.redirect('/login');
