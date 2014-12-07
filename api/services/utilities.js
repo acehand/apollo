@@ -19,13 +19,15 @@ module.exports  = {
 			return 'category='+keywords['Category'];
 		}
 	},
-
 	buildFSQuery : function(params){
 		var qString = '';
 		if (params.hasOwnProperty('Lat_Long')) {
 			qString = 'll='+params['Lat_Long'];
 		} else {
-			qString = 'near='+params['location']+'&'+params['name'];
+			qString = 'near='+params['location'];
+		}
+		if (params.hasOwnProperty('venue')) {
+			qString += '&query='+params['venue'];
 		}
 		qString += '&intent=browse&radius=5000';
 		return '?'+qString+'&oauth_token=QRIWYVATNEXM3HVSD2SQA5QVIK3JRZF205K5TBOZSPV02G5Q&v=20141207';
