@@ -14,7 +14,7 @@ var UploadController = {
       console.log(response.body);
       console.log(response.body.data[0].objects);
     });
-  };
+  },
 
   list_bucket_names : function() {
     unirest.get("https://api.astra.io/v0/bucket")
@@ -25,7 +25,7 @@ var UploadController = {
          console.log(bucket.name);
       });
     });
-  };
+  },
 
   create_bucket : function(bucket_name) {
     unirest.post("https://api.astra.io/v0/bucket")
@@ -34,7 +34,7 @@ var UploadController = {
     .end( function(response) {
       console.log(response.body);
     });
-  };
+  },
 
   read_bucket : function(bucket_name) {
     unirest.get("https://api.astra.io/v0/bucket/" + bucket_name)
@@ -42,7 +42,7 @@ var UploadController = {
     .end( function(response) {
       console.log(response.body);
     });
-  };
+  },
 
   // delete_bucket:function(bucket_name){
   // unirest.get("https://api.astra.io/v0/bucket/" + bucket_name)
