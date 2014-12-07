@@ -25,19 +25,6 @@ module.exports = {
 			var image_url = sails.config.twilioConfig.default_pic
 		}
 
-<<<<<<< Updated upstream
-// SMS Message sender from earlier (TEST)
-	client.messages.create({
-    body: body_text,
-    to: data["From"],
-    from: '+15854818566',
-    mediaUrl: image_url
-}, function(err, message) {
-    process.stdout.write(message.sid);
-    console.log("\nMessage sent")
-});
-}
-=======
 		// SMS Message sender from earlier (TEST)
 		client.messages.create({
 			body: body_text,
@@ -50,6 +37,5 @@ module.exports = {
 		});
 		// END SMS message test
 	}
->>>>>>> Stashed changes
 };
 
