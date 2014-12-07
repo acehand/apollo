@@ -55,3 +55,71 @@ function parseFSQImages(data){
     });
     return image_records;
 }
+
+$(function(){
+  if ($('#map-canvas').length) {
+    var geocoder;
+    var map;
+    var infowindow = new google.maps.InfoWindow();
+    var latitude = null, longitude = null;
+    getLocation();
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      initialize();
+    }
+
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var myLatlng = new google.maps.LatLng(latitude,longitude);
+            var mapOptions = {
+                zoom: 4,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                      mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Hello World!',
+            draggable:true // Makes the marker draggable
+      });
+
+        // adds an event listener on the marker.
+        // The event is fired when the marker is dropped in this case
+        google.maps.event.addListener(marker, 'dragend', function() {
+            codeLatLng(marker);
+        });
+    }
+
+    function codeLatLng(marker) {
+
+
+      var latlng = marker.getPosition();
+      //var latlng = new google.maps.LatLng(lat, lng);
+      geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[1]) {
+            infowindow.setContent("<button>click</button>");
+            infowindow.open(map, marker);
+          } else {
+            alert('No results found');
+          }
+        } else {
+          alert('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+  }
+});
