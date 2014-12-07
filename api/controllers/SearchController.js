@@ -22,21 +22,19 @@ module.exports = {
 
 //Needs Location lat lon or Place  and String for location
   getVenuesByLocation : function(req, res) {
-    var params = {};
-    // params.Lat_Long = req.query.lat_long;
+     var params = {};
     params.Lat_Long = "48.858093,2.294694";
     params.venue = req.query.venue;
-    var venues;
+    var venues, imagesByVenue=[];
     var url = 'https://api.foursquare.com/v2/venues/search' + (utilities.buildFSQuery(params));
     Log.info(url);
     rest.get(url).
       on('success', function(results){
-          venues = results.response.venues.map(function(item){
-            return {
-               name: item.name,
-               id: item.id,
-               location : item.location
-             }
+          results.response.venues.forEach(function(venue){
+            name = venue.name;
+            utilities.getImagesInVenue(venue.id, function(result){
+                imagesByVenue.push({name:result})  
+            });
           });
       }).
       on('complete',function(results){
@@ -78,9 +76,7 @@ module.exports = {
      console.log(result);
     });
     images.on('complete',function(result){
-        return res.json({
-           todo: 'getImages() is not implemented yet!'
-        });  
+        return res.json(result);
     });
   },
 
@@ -99,3 +95,23 @@ module.exports = {
     } 
   }
 };
+
+
+function getImagesInVenue (req,res){
+  req.id = '4d1e3d2a16cfb60cadd84661';
+  req.name = "Cake Joy";
+  var url = 'https://api.foursquare.com/v2/venues/'+req.id+'/photos?oauth_token=QRIWYVATNEXM3HVSD2SQA5QVIK3JRZF205K5TBOZSPV02G5Q&v=20141207';
+  var photos;
+  rest.get(url).
+    on('fail',function(response){
+      Log.error(response);
+    }).
+    on('success', function(result){
+      if (result.response.photos) {
+        photos = result.response.photos;
+        if (photos.count > 0) {
+          Images.addFromFS(photos.items, req.id, req.name, 'FOURSQUARE');
+        }
+      }
+    });
+}

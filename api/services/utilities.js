@@ -40,6 +40,28 @@ module.exports  = {
 			short_name : category.shortName,
 			parent_category_id : parent_category_id
 		};
-		return category_record;
-	}
+		return category_record;	
+	},
+
+	getImagesInVenue : function (venue_id, callBack){
+    var url = 'https://api.foursquare.com/v2/venues/'+venue_id+'/photos?oauth_token=QRIWYVATNEXM3HVSD2SQA5QVIK3JRZF205K5TBOZSPV02G5Q&v=20141207';
+    var photos, images=[];
+    rest.get(url).
+      on('fail',function(response){
+        Log.error(response);
+      }).
+      on('success', function(result){
+        if (result.response.photos) {
+          photos = result.response.photos;
+          if (photos.count > 0) {
+            Log.info('Fetching Images');
+            images = photos.items;
+            Log(images);
+          }
+        }
+      }).
+      on('complete', function(){
+      	callBack(images);
+      });
+  },
 }
